@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gift Card Landing</title>
+  <style>
+    :root{
+      --bg: #1a1f2e;
+      --card-bg: #ffffff;
+      --accent: #00D46A;
+      --accent-dark: #00c060;
+      --panel-radius: 12px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.6);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width:760px;
+      margin:40px auto;
+      padding:28px;
+    }
+
+    .center {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:22px;
+    }
+
+    /* Card image */
+    .card-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
+    .card-img{
+      width:100%;
+      max-width:380px;
+      border-radius:12px;
+      box-shadow: var(--shadow);
+      display:block;
+    }
+
+    /* Timer */
+    .timer {
+      width:100%;
+      max-width:640px;
+      margin-top:6px;
+      background: linear-gradient(90deg, #17d46f, #00c060);
+      color:white;
+      border-radius:10px;
+      padding:16px 20px;
+      text-align:center;
+      font-weight:700;
+      font-size:20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+    .timer .icon {
+      width:20px;
+      height:20px;
+      border:2px solid rgba(255,255,255,0.9);
+      border-radius:50%;
+      display:inline-grid;
+      place-items:center;
+    }
+    .timer .icon:before{
+      content:"⏰";
+      font-size:14px;
+    }
+
+    /* panels */
+    .panel {
+      width:100%;
+      background:var(--card-bg);
+      border-radius:var(--panel-radius);
+      padding:20px;
+      box-shadow: var(--shadow);
+      color:#0f172a;
+    }
+    h2 {
+      margin:0 0 12px 0;
+      font-size:20px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .muted { color:#6b7280; font-size:14px; margin-top:6px; }
+
+    .step {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin:12px 0;
+    }
+    .check {
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      background:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      margin-top:2px;
+      flex-shrink:0;
+    }
+    .step p { margin:0; font-weight:600; color:#0f172a; }
+    .step a { display:block; margin-top:6px; font-size:13px; color:var(--accent); text-decoration:none; }
+
+    /* Claim button */
+    .claim-wrap { width:100%; display:flex; justify-content:center; margin-top:10px; }
+    .claim {
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      text-decoration:none;
+      font-weight:800;
+      font-size:20px;
+      padding:16px 28px;
+      border-radius:12px;
+      box-shadow: 0 10px 20px rgba(2,8,10,0.25);
+      transition:background .15s ease, transform .08s ease;
+      width:100%;
+      max-width:640px;
+      text-align:center;
+    }
+    .claim:hover{ background:var(--accent-dark); transform:translateY(-2px); }
+
+    /* small screens */
+    @media (max-width:520px){
+      .container{ padding:18px; margin:18px auto; }
+      .timer{ font-size:18px; padding:12px 16px; }
+      .claim{ font-size:18px; padding:14px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container center">
+    <!-- Card image -->
+    <div class="card-wrap">
+      <img src="images/card.png" alt="$750 Gift Card" class="card-img" />
+    </div>
+
+    <!-- Timer -->
+    <div class="timer" aria-live="polite">
+      ⏱️<span id="countdown">20:00</span>
+    </div>
+
+    <!-- NEW Claim Now button under timer -->
+    <div class="claim-wrap">
+      <a class="claim" id="claimBtnTop" 
+         href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber"
+         target="_blank" 
+         rel="noopener noreferrer">
+          🎁Claim Now
+      </a>
+    </div>
+
+    <!-- Quick Start Guide -->
+    <div class="panel" role="region" aria-labelledby="quickstart-heading">
+      <h2 id="quickstart-heading">Quick Start Guide →</h2>
+
+      <div class="step">
+        <div class="check">✓</div>
+        <div>
+          <p>Complete 3-5 required deals</p>
+          <a href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber">Earn up to $750</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="check">✓</div>
+        <div>
+          <p>Provide a valid email address</p>
+          <a href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber">For instant notification</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="check">✓</div>
+        <div>
+          <p>Ensure you are 18 years or older</p>
+          <a href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber">Required</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Common Questions -->
+    <div class="panel" style="margin-top:18px;" role="region" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Common Questions →</h2>
+
+      <div style="margin-top:6px;">
+        <a href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber" style="color:var(--accent); font-weight:700; text-decoration:none;">When do I get my giftcard?</a>
+        <p class="muted">Giftcards are processed within 24-48 hours</p>
+      </div>
+
+      <div style="margin-top:12px;">
+        <a href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber" style="color:var(--accent); font-weight:700; text-decoration:none;">Do I really need to complete 3-5 deals?</a>
+        <p class="muted">Yes, in order to receive your giftcard you have to!</p>
+      </div>
+    </div>
+
+    <!-- Claim button (bottom) -->
+    <div class="claim-wrap">
+      <a class="claim" id="claimBtn" 
+         href="https://getrewarrds.com/aff_c?offer_id=633&aff_id=134736&source=uber"
+         target="_blank" 
+         rel="noopener noreferrer">
+         🎁Claim Now
+      </a>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="muted" style="text-align:center; max-width:640px; margin-top:14px;">
+      This is a sample promotional landing page. Replace images, texts, and links with your own assets and terms.
+    </p>
+  </div>
+
+  <script>
+    // Countdown timer starting from 20 minutes (20*60 seconds)
+    (function(){
+      const startSeconds = 20 * 60;
+      let remaining = startSeconds;
+      const el = document.getElementById('countdown');
+
+      function formatTime(s){
+        const m = Math.floor(s/60);
+        const sec = s % 60;
+        return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+      }
+
+      el.textContent = formatTime(remaining);
+
+      const interval = setInterval(()=>{
+        remaining--;
+        if (remaining < 0) {
+          clearInterval(interval);
+          el.textContent = "00:00";
+          return;
+        }
+        el.textContent = formatTime(remaining);
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
